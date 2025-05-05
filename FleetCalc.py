@@ -117,7 +117,6 @@ if submit:
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Ach_Ritasi = Productivity_Hauler * konversi_jarak / 42 * jumlah_hd
-        Cycle_Time_Improve = (cycle_time_hd * 0.95)
 
         target_loader = target_loader_map.get(unit_loader, 0)
         target_hauler = 231
@@ -129,7 +128,6 @@ if submit:
         st.write(f"**Productivity Loader:** {Productivity_Loader:.2f} Bcm/Jam")
         st.write(f"**Productivity Hauler:** {Productivity_Hauler:.2f} Bcm/Jam")
         st.write(f"**Ritasi Should Be:** {Ach_Ritasi:.2f} Rit/Jam")
-        st.write(f"**Improve Speed:** {Cycle_Time_Improve:.2f} Km/Jam")
 
         if Productivity_Loader >= target_loader:
             st.success(f"✅ Produktivitas Loader ({Productivity_Loader:.2f}) telah mencapai target {target_loader} Bcm/Jam.")
