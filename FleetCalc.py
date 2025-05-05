@@ -139,7 +139,7 @@ if submit:
         else:
             st.warning(f"⚠️ Produktivitas Hauler ({Productivity_Hauler:.2f}) belum mencapai target {target_hauler} Bcm/Jam.")
 
-        if Ach_Ritasi >= target_ritasi:
+        if Ach_Ritasi >= target_ritasi * jumlah_hd:
             st.success(f"✅ Ritasi should be {Ach_Ritasi:.2f} Rit telah mencapai target ({target_ritasi:.0f} Rit/Unit/Jam).")
         else:
             st.warning(f"⚠️ Ritasi should be {Ach_Ritasi:.2f} Rit belum mencapai target ({target_ritasi:.0f} Rit/Unit/Jam).")
