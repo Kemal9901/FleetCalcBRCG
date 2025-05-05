@@ -113,7 +113,7 @@ if submit:
         Serving_Time = (spotting_time / 60) + loading_time_pc
         Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
         Productivity_Hauler = Productivity_Loader / jumlah_hd / konversi_jarak
-        Kebutuhan_HD = round((cycle_time_hd * Productivity_Loader) / (60 * 60 * 0.8) + 1)
+        Kebutuhan_HD = round((cycle_time_hd * Productivity_Loader) / (60 * 60 * 0.8))
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Ach_Ritasi = Productivity_Hauler * konversi_jarak / 42 * jumlah_hd
@@ -146,7 +146,7 @@ if submit:
 
         if jumlah_hd < Kebutuhan_HD:
             st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD - jumlah_hd:.2f} unit HD785**.")
-        elif jumlah_hd > Kebutuhan_HD + 1:
+        elif jumlah_hd > Kebutuhan_HD:
             st.warning(f"⚠️ Jumlah HD785 melebihi ideal **{Kebutuhan_HD:.2f} unit**.")
         else:
             st.success("✅ Jumlah HD785 saat ini sudah optimal.")
