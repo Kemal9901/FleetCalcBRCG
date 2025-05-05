@@ -167,8 +167,8 @@ if submit:
         elif Matching_Factor_Micro > 1:
             st.info("⏱ *MF Micro > 1*: Hauler idle, terlalu cepat datang sebelum material/area siap.")
 
-        if abs(Matching_Factor_Macro - Matching_Factor_Micro) > 0:
-            st.warning("⚠️ Gap besar antara MF Macro dan Micro → Evaluasi akurasi waktu loading & cycle time hauler.")
+        if abs(Matching_Factor_Macro - Matching_Factor_Micro) > 0.1:
+            st.warning("⚠️ Gap antara MF Macro dan Micro → Evaluasi akurasi waktu loading & cycle time hauler.")
         else:
             st.success("✅ MF Macro & Micro seimbang → Perpaduan waktu & kapasitas sudah optimal.")
 
