@@ -8,7 +8,7 @@ data_konversi = {
               1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.1, 2.2, 2.3,
               2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4,
               3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 4.1, 4.2, 4.3, 4.4, 4.5,
-              4.6, 4.7, 4.8, 4.9, 5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6,
+              4.6, 4.7, 4.8, 4.9, 5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 
               5.7, 5.8, 5.9, 6.0, 6.1, 6.2, 6.3, 6.4, 6.5, 6.6, 6.7],
     "konversi": [1.342, 1.342, 1.342, 1.342, 1.342, 1.231, 1.140, 1.064, 1.000,
                  0.945, 0.898, 0.856, 0.820, 0.787, 0.758, 0.732, 0.708, 0.687,
@@ -140,9 +140,9 @@ if submit:
             st.warning(f"⚠️ Produktivitas Hauler ({Productivity_Hauler:.2f}) belum mencapai target {target_hauler} Bcm/Jam.")
 
         if Ach_Ritasi >= target_ritasi:
-            st.success(f"✅ Ritasi aktual {Ach_Ritasi:.2f} Rit telah mencapai target ({target_ritasi:.0f} Rit/Unit/Jam).")
+            st.success(f"✅ Ritasi Should Be {Ach_Ritasi:.2f} Rit. Target ({target_ritasi:.0f} Rit/Unit/Jam).")
         else:
-            st.warning(f"⚠️ Ritasi aktual {Ach_Ritasi:.2f} Rit belum mencapai target ({target_ritasi:.0f} Rit/Unit/Jam).")
+            st.warning(f"⚠️ Ritasi Should Be {Ach_Ritasi:.2f} Rit. Target ({target_ritasi:.0f} Rit/Unit/Jam).")
 
         if jumlah_hd < Kebutuhan_HD:
             st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD - jumlah_hd:.2f} unit HD785**.")
