@@ -54,9 +54,9 @@ def plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cy
     konversi_jarak = get_konversi(jarak)
     unit_productivity_map = {
         "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
-        "EX1250": 7, "EX1284": 7, "EX1266": 7, "EX1280": 7, "EX1262": 7,
-        "EX1260": 7, "EX1283": 7, "EX1183": 6.5, "EX1313": 6.5,
-        "EX1185": 6.5, "EX1171": 6.5,
+        "EX1250": 7.5, "EX1284": 7.5, "EX1266": 7.5, "EX1280": 7.5, "EX1262": 7.5,
+        "EX1260": 7.5, "EX1283": 7.5, "EX1183": 6.5, "EX1313": 6.5,
+        "EX1185": 7, "EX1171": 7,
     }
     x = unit_productivity_map.get(unit_loader, 0)
 
