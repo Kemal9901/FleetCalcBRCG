@@ -54,9 +54,9 @@ def plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cy
     konversi_jarak = get_konversi(jarak)
     unit_productivity_map = {
         "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
-        "EX1250": 7.5, "EX1284": 7.5, "EX1266": 7.5, "EX1280": 7.5, "EX1262": 7.5,
-        "EX1260": 7.5, "EX1283": 7.5, "EX1183": 6.5, "EX1313": 6.5,
-        "EX1185": 7, "EX1171": 7,
+        "EX1250": 7, "EX1284": 7, "EX1266": 7, "EX1280": 7, "EX1262": 7,
+        "EX1260": 7, "EX1283": 7, "EX1183": 6.5, "EX1313": 6.5,
+        "EX1185": 6.5, "EX1171": 6.5,
     }
     x = unit_productivity_map.get(unit_loader, 0)
 
@@ -113,7 +113,7 @@ if submit:
         Serving_Time = (spotting_time / 60) + loading_time_pc
         Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
         Productivity_Hauler = Productivity_Loader / jumlah_hd / konversi_jarak
-        Kebutuhan_HD_Aktual = round((cycle_time_hd * Productivity_Loader) / (60 * 60 * 0.8))
+        Kebutuhan_HD = round((cycle_time_hd * Productivity_Loader) / (60 * 60 * 0.8))
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Ach_Ritasi = Productivity_Hauler * konversi_jarak / 42 * jumlah_hd
@@ -123,11 +123,11 @@ if submit:
         target_ritasi = get_target_ritasi(jarak)
 
         st.markdown("### Hasil Perhitungan")
+        st.write(f"**Match Factor Macro:** {Matching_Factor_Macro:.2f}")
+        st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
         st.write(f"**Productivity Loader:** {Productivity_Loader:.2f} Bcm/Jam")
         st.write(f"**Productivity Hauler:** {Productivity_Hauler:.2f} Bcm/Jam")
         st.write(f"**Ritasi Should Be:** {Ach_Ritasi:.2f} Rit/Jam")
-        st.write(f"**Match Factor Macro:** {Matching_Factor_Macro:.2f}")
-        st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
 
         if Productivity_Loader >= target_loader:
             st.success(f"✅ Produktivitas Loader ({Productivity_Loader:.2f}) telah mencapai target {target_loader} Bcm/Jam.")
