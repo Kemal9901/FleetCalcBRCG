@@ -105,7 +105,7 @@ if submit:
             "EX1250": 7, "EX1284": 7, "EX1266": 7, "EX1280": 7, "EX1262": 7,
             "EX1260": 7, "EX1283": 7, "EX1183": 6.5, "EX1313": 6.5,
             "EX1185": 6.5, "EX1171": 6.5,
-        }
+        } 
 
         x = unit_productivity_map.get(unit_loader, 0)
         konversi_jarak = get_konversi(jarak)
@@ -113,7 +113,8 @@ if submit:
         Serving_Time = (spotting_time / 60) + loading_time_pc
         Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
         Productivity_Hauler = Productivity_Loader / jumlah_hd / konversi_jarak
-        Kebutuhan_HD = round((cycle_time_hd * Productivity_Loader) / (60 * 60 * 0.8))
+        Kebutuhan_HD_Aktual = round(cycle_time_hd / Serving_Time)
+        Kebutuhan_HD_Plan = round(((2 * jarak * 60) / 23) + Serving_Time / Serving_Time)
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Ach_Ritasi = Productivity_Hauler * konversi_jarak / 42 * jumlah_hd
@@ -127,6 +128,8 @@ if submit:
         st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
         st.write(f"**Productivity Loader:** {Productivity_Loader:.2f} Bcm/Jam")
         st.write(f"**Productivity Hauler:** {Productivity_Hauler:.2f} Bcm/Jam")
+        st.write(f"**Kebutuhan HD Plan:** {Kebutuhan_HD_Plan:.2f} Unit")
+        st.write(f"**Kebutuhan HD Aktual:** {Kebutuhan_HD_Aktual:.2f} Unit")
         st.write(f"**Ritasi Should Be:** {Ach_Ritasi:.2f} Rit/Jam")
 
         if Productivity_Loader >= target_loader:
@@ -144,10 +147,10 @@ if submit:
         else:
             st.warning(f"⚠️ Ritasi should be {Ach_Ritasi:.2f} Rit belum mencapai target minimal ({target_ritasi:.0f} Rit/Unit/Jam).")
 
-        if jumlah_hd < Kebutuhan_HD:
-            st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD - jumlah_hd:.2f} unit HD785**.")
-        elif jumlah_hd > Kebutuhan_HD:
-            st.warning(f"⚠️ Jumlah HD785 melebihi ideal **{Kebutuhan_HD:.2f} unit**.")
+        if jumlah_hd < Kebutuhan_HD_Aktual:
+            st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD_Aktual - jumlah_hd:.2f} unit HD785**.")
+        elif jumlah_hd > Kebutuhan_HD_Aktual:
+            st.warning(f"⚠️ Jumlah HD785 melebihi ideal **{Kebutuhan_HD_Aktual:.2f} unit**.")
         else:
             st.success("✅ Jumlah HD785 saat ini sudah optimal.")
 
