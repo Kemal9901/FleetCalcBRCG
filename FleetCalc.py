@@ -114,7 +114,7 @@ if submit:
         Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
         Productivity_Hauler = Productivity_Loader / jumlah_hd / konversi_jarak
         Kebutuhan_HD_Aktual = round(cycle_time_hd / Serving_Time)
-        Kebutuhan_HD_Plan = round(((2 * jarak * 60) / 23) + Serving_Time / Serving_Time)
+        Kebutuhan_HD_Plan = round(((2 * jarak * 60) / 23) / Serving_Time)
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Ach_Ritasi = Productivity_Hauler * konversi_jarak / 42 * jumlah_hd
