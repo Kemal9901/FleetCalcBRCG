@@ -143,14 +143,14 @@ if submit:
             st.warning(f"⚠️ Produktivitas Hauler ({Productivity_Hauler:.2f}) belum mencapai target {target_hauler} Bcm/Jam.")
 
         if Ach_Ritasi >= target_ritasi * jumlah_hd:
-            st.success(f"✅ Ritasi should be {Ach_Ritasi:.2f} Rit telah mencapai target minimal ({target_ritasi:.0f} Rit/Unit/Jam).")
+            st.success(f"✅ Ritasi should be {Ach_Ritasi:.2f} Rit mencapai target minimal ({target_ritasi:.0f} Rit/Unit/Jam).")
         else:
             st.warning(f"⚠️ Ritasi should be {Ach_Ritasi:.2f} Rit belum mencapai target minimal ({target_ritasi:.0f} Rit/Unit/Jam).")
 
         if jumlah_hd < Kebutuhan_HD_Plan:
-            st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD_Plan - jumlah_hd:.2f} unit HD785**.")
+            st.warning(f"Rekomendasi: Tambahkan **{Kebutuhan_HD_Plan - jumlah_hd:.2f} unit HD785. Pertimbangkan MF untuk Optimasi**.")
         elif jumlah_hd > Kebutuhan_HD_Plan:
-            st.warning(f"⚠️ Jumlah HD785 melebihi ideal **{Kebutuhan_HD_Plan:.2f} unit**.")
+            st.warning(f"⚠️ Jumlah HD785 melebihi ideal **{Kebutuhan_HD_Plan:.2f} unit. Pertimbangkan MF untuk Optimasi**.")
         else:
             st.success("✅ Jumlah HD785 saat ini sudah optimal.")
 
@@ -171,9 +171,11 @@ if submit:
             st.info("⏱ *MF Micro > 1*: Hauler idle, terlalu cepat datang sebelum material/area siap.")
 
         if abs(Matching_Factor_Macro - Matching_Factor_Micro) > 0.1:
-            st.warning("⚠️ Gap antara MF Macro dan Micro → Evaluasi akurasi waktu loading & cycle time hauler.")
+            st.warning("⚠️ Gap signifikan antara MF Macro & Micro → Ketidakseimbangan antara kapasitas dan waktu siklus. Bisa disebabkan data input tidak akurat atau variasi kondisi lapangan. " \
+            "💡 Tindakan: Lakukan pengecekan lapangan dan validasi kembali input waktu loading, spotting, & CT hauler.")
         else:
-            st.success("✅ MF Macro & Micro seimbang → Perpaduan waktu & kapasitas sudah optimal.")
+            st.success("✅ MF Macro & Micro seimbang → Alokasi unit & waktu kerja antara loader dan hauler berada dalam keseimbangan optimal." \
+            "💡 Tindakan: Pertahankan kondisi ini dengan monitoring rutin.")
 
 # Tabel Target
 st.markdown("### 📌 Target Fleet Performance")
