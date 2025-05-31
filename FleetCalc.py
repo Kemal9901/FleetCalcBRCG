@@ -124,8 +124,6 @@ if submit:
         target_ritasi = get_target_ritasi(jarak)
 
         st.markdown("### Hasil Perhitungan")
-        st.write(f"**Match Factor Macro:** {Matching_Factor_Macro:.2f}")
-        st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
         st.write(f"**Productivity Loader:** {Productivity_Loader:.2f} Bcm/Jam")
         st.write(f"**Productivity Hauler:** {Productivity_Hauler:.2f} Bcm/Jam")
         st.write(f"**Kebutuhan HD Plan (Speed Plan 23 KM/Jam):** {Kebutuhan_HD_Plan:.2f} Unit")
@@ -156,7 +154,10 @@ if submit:
 
         # Analisis Matching Factor
         st.markdown("### 📊 Analisis Matching Factor")
-        
+
+        st.write(f"**Match Factor Macro:** {Matching_Factor_Macro:.2f}")
+        st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
+
         # MF chart setelah perhitungan
         plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cycle_time_hd, jarak)        
 
