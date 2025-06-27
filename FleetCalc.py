@@ -136,9 +136,9 @@ if submit:
             st.warning(f"⚠️ Produktivitas Loader ({Productivity_Loader:.2f}) belum mencapai target {target_loader} Bcm/Jam.")
 
         if Productivity_Hauler >= target_hauler:
-            st.success(f"✅ Produktivitas Hauler ({Productivity_Hauler:.2f}) telah mencapai target {target_hauler} Bcm/Jam.")
+            st.success(f"✅ Produktivitas Hauler ({Productivity_Hauler:.2f}) telah mencapai target {target_hauler} Bcm/Jam.Km")
         else:
-            st.warning(f"⚠️ Produktivitas Hauler ({Productivity_Hauler:.2f}) belum mencapai target {target_hauler} Bcm/Jam.")
+            st.warning(f"⚠️ Produktivitas Hauler ({Productivity_Hauler:.2f}) belum mencapai target {target_hauler} Bcm/Jam.Km")
 
         if Ach_Ritasi >= target_ritasi * jumlah_hd:
             st.success(f"✅ Ritasi should be {Ach_Ritasi:.2f} Rit mencapai target minimal ({target_ritasi:.0f} Rit/Unit/Jam).")
