@@ -41,8 +41,8 @@ def get_target_ritasi(jarak_input):
 
 # Target produktivitas loader
 target_loader_map = {
-    "EX1765": 800, "EX1862": 950,
-    "EX1836": 800, "EX1791": 800,
+    "EX1894": 950, "EX1862": 950,
+    "EX1836": 800, "EX1791": 800, "EX1765": 800,
     "EX1250": 525, "EX1284": 525, "EX1266": 525, "EX1280": 525,
     "EX1262": 525, "EX1260": 525, "EX1283": 525, "EX1183": 525,
     "EX1313": 525, "EX1185": 525, "EX1171": 525,
@@ -53,7 +53,7 @@ def plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cy
     jumlah_hd_range = list(range(2, 13))
     konversi_jarak = get_konversi(jarak)
     unit_productivity_map = {
-        "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
+        "EX1894": 13, "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
         "EX1250": 7, "EX1284": 7, "EX1266": 7, "EX1280": 7, "EX1262": 7,
         "EX1260": 7, "EX1283": 7, "EX1183": 6.5, "EX1313": 6.5,
         "EX1185": 6.5, "EX1171": 6.5,
@@ -101,7 +101,7 @@ with st.form("input_form"):
 if submit:
     if all([jumlah_hd > 0, cycle_time_pc > 0, loading_time_pc > 0, jumlah_passing > 0, cycle_time_hd > 0, jarak > 0]):
         unit_productivity_map = {
-            "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
+            "EX1894": 13, "EX1862": 13, "EX1765": 12, "EX1836": 12, "EX1791": 12,
             "EX1250": 7, "EX1284": 7, "EX1266": 7, "EX1280": 7, "EX1262": 7,
             "EX1260": 7, "EX1283": 7, "EX1183": 6.5, "EX1313": 6.5,
             "EX1185": 6.5, "EX1171": 6.5,
