@@ -95,6 +95,7 @@ with st.form("input_form"):
     jumlah_passing = st.number_input("Jumlah Passing Loader:", min_value=0.0, value=0.0, step=1.0)
     cycle_time_hd = st.number_input("Cycle Time HD (menit):", min_value=0.0, value=0.0, step=0.1)
     jarak = round(st.number_input("Jarak Front ke Disposal (KM):", min_value=0.0, value=0.0, step=0.1))
+    spotting_time = 12 #default
     submit = st.form_submit_button("Hitung")
 
 if submit:
@@ -109,7 +110,7 @@ if submit:
         x = unit_productivity_map.get(unit_loader, 0)
         konversi_jarak = get_konversi(jarak)
 
-        Serving_Time = (12 / 60) + loading_time_pc
+        Serving_Time = (spotting_time / 60) + loading_time_pc
         Productivity_Loader = (((x * 0.8) * (3600 * 0.9)) / cycle_time_pc) / 1.43
         Productivity_Hauler = ((60 * 0.9) * (60 / cycle_time_hd)) * 0.8
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
