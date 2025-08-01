@@ -90,7 +90,6 @@ with st.form("input_form"):
     st.markdown("### Masukkan Parameter")
     unit_loader = st.selectbox("Pilih Unit Loader:", list(target_loader_map.keys()))
     jumlah_hd = st.number_input("Jumlah HD785 (unit):", min_value=0.0, value=0.0, step=1.0, format="%.2f")
-    spotting_time = st.number_input("Spotting Time Unit Hauler:", min_value=0.0, value=0.0, step=1.0)
     cycle_time_pc = st.number_input("Cycle Time Loader (detik):", min_value=0.0, value=0.0, step=0.1)
     loading_time_pc = st.number_input("Loading Time Loader (menit):", min_value=0.0, value=0.0, step=0.1)
     jumlah_passing = st.number_input("Jumlah Passing Loader:", min_value=0.0, value=0.0, step=1.0)
@@ -110,9 +109,9 @@ if submit:
         x = unit_productivity_map.get(unit_loader, 0)
         konversi_jarak = get_konversi(jarak)
 
-        Serving_Time = (spotting_time / 60) + loading_time_pc
-        Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
-        Productivity_Hauler = Productivity_Loader / jumlah_hd / konversi_jarak
+        Serving_Time = (12 / 60) + loading_time_pc
+        Productivity_Loader = (((x * 0.8) * (3600 * 0.9)) / cycle_time_pc) / 1.43
+        Productivity_Hauler = ((60 * 0.9) * (60 / cycle_time_hd)) * 0.8
         Matching_Factor_Macro = (jumlah_hd * (231 * konversi_jarak)) / Productivity_Loader
         Matching_Factor_Micro = (jumlah_hd * Serving_Time) / cycle_time_hd
         Kebutuhan_HD_Aktual = round((Matching_Factor_Micro * cycle_time_hd) / Serving_Time)
@@ -187,3 +186,4 @@ data = {
     "Loading Time (menit)": ["2,5", "2,8", "3", "-"]
 }
 st.table(data)
+
