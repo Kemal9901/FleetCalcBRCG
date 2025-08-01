@@ -49,7 +49,7 @@ target_loader_map = {
 }
 
 # Fungsi plot MF Macro vs Micro
-def plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cycle_time_hd, jarak):
+def plot_mf_chart(unit_loader, 12, loading_time_pc, cycle_time_pc, cycle_time_hd, jarak):
     jumlah_hd_range = list(range(2, 13))
     konversi_jarak = get_konversi(jarak)
     unit_productivity_map = {
@@ -60,8 +60,8 @@ def plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cy
     }
     x = unit_productivity_map.get(unit_loader, 0)
 
-    Serving_Time = (spotting_time / 60) + loading_time_pc
-    Productivity_Loader = (((x * 0.85) * (3600 * 0.8)) / cycle_time_pc) / 1.43
+    Serving_Time = (12 / 60) + loading_time_pc
+    Productivity_Loader = (((x * 0.8) * (3600 * 0.9)) / cycle_time_pc) / 1.43
 
     mf_macro_list = []
     mf_micro_list = []
@@ -158,7 +158,7 @@ if submit:
         st.write(f"**Match Factor Micro:** {Matching_Factor_Micro:.2f}")
 
         # MF chart setelah perhitungan
-        plot_mf_chart(unit_loader, spotting_time, loading_time_pc, cycle_time_pc, cycle_time_hd, jarak)        
+        plot_mf_chart(unit_loader, 12, loading_time_pc, cycle_time_pc, cycle_time_hd, jarak)        
 
         if Matching_Factor_Macro < 1:
             st.info("🔄 *MF Macro < 1*: Risiko Loader Hanging.")
@@ -186,4 +186,5 @@ data = {
     "Loading Time (menit)": ["2,5", "2,8", "3", "-"]
 }
 st.table(data)
+
 
